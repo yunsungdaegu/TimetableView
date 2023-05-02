@@ -295,7 +295,10 @@ public class TimetableView extends LinearLayout {
                     tv.setLayoutParams(createTableRowParam(sideCellWidth, cellHeight));
                 } else {
                     tv.setText("");
-                    tv.setBackground(getResources().getDrawable(R.drawable.item_border));
+                    if (k % 2 == i % 2)
+                        tv.setBackground(getResources().getDrawable(R.drawable.item_border_dark));
+                    else
+                        tv.setBackground(getResources().getDrawable(R.drawable.item_border));
                     tv.setGravity(Gravity.RIGHT);
                 }
                 tableRow.addView(tv);

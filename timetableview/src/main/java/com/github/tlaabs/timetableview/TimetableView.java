@@ -148,7 +148,11 @@ public class TimetableView extends LinearLayout {
         add(schedules, -1);
     }
 
-    private void add(final ArrayList<Schedule> schedules, int specIdx) {
+    public void add(final ArrayList<Schedule> schedules, int specIdx) {
+        add(schedules, specIdx, true);
+    }
+
+    private void add(final ArrayList<Schedule> schedules, int specIdx, boolean isCenter) {
         final int count = specIdx < 0 ? ++stickerCount : specIdx;
         Sticker sticker = new Sticker();
         for (Schedule schedule : schedules) {
@@ -161,6 +165,10 @@ public class TimetableView extends LinearLayout {
             tv.setTextColor(Color.parseColor("#FFFFFF"));
             tv.setTextSize(TypedValue.COMPLEX_UNIT_DIP, DEFAULT_STICKER_FONT_SIZE_DP);
             tv.setTypeface(null, Typeface.BOLD);
+
+            if (isCenter) {
+                tv.setGravity(Gravity.CENTER);
+            }
 
             tv.setOnClickListener(new OnClickListener() {
                 @Override

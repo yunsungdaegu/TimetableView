@@ -4,12 +4,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.github.tlaabs.timetableview.Schedule;
 import com.github.tlaabs.timetableview.TimetableView;
@@ -87,23 +88,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        switch (requestCode){
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
             case REQUEST_ADD:
-                if(resultCode == EditActivity.RESULT_OK_ADD){
-                    ArrayList<Schedule> item = (ArrayList<Schedule>)data.getSerializableExtra("schedules");
+                if (resultCode == EditActivity.RESULT_OK_ADD) {
+                    ArrayList<Schedule> item = (ArrayList<Schedule>) data.getSerializableExtra("schedules");
                     timetable.add(item);
                 }
                 break;
             case REQUEST_EDIT:
                 /** Edit -> Submit */
-                if(resultCode == EditActivity.RESULT_OK_EDIT){
-                    int idx = data.getIntExtra("idx",-1);
-                    ArrayList<Schedule> item = (ArrayList<Schedule>)data.getSerializableExtra("schedules");
-                    timetable.edit(idx,item);
+                if (resultCode == EditActivity.RESULT_OK_EDIT) {
+                    int idx = data.getIntExtra("idx", -1);
+                    ArrayList<Schedule> item = (ArrayList<Schedule>) data.getSerializableExtra("schedules");
+                    timetable.edit(idx, item);
                 }
                 /** Edit -> Delete */
-                else if(resultCode == EditActivity.RESULT_OK_DELETE){
-                    int idx = data.getIntExtra("idx",-1);
+                else if (resultCode == EditActivity.RESULT_OK_DELETE) {
+                    int idx = data.getIntExtra("idx", -1);
                     timetable.remove(idx);
                 }
                 break;

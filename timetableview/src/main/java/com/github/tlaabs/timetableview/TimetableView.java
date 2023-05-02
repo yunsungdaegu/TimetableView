@@ -152,7 +152,7 @@ public class TimetableView extends LinearLayout {
         add(schedules, specIdx, true);
     }
 
-    private void add(final ArrayList<Schedule> schedules, int specIdx, boolean isCenter) {
+    public void add(final ArrayList<Schedule> schedules, int specIdx, boolean isCenter) {
         final int count = specIdx < 0 ? ++stickerCount : specIdx;
         Sticker sticker = new Sticker();
         for (Schedule schedule : schedules) {

@@ -36,7 +36,7 @@ public class TimetableView extends LinearLayout {
     private static final int DEFAULT_SIDE_HEADER_FONT_SIZE_DP = 13;
     private static final int DEFAULT_HEADER_FONT_SIZE_DP = 15;
     private static final int DEFAULT_HEADER_HIGHLIGHT_FONT_SIZE_DP = 15;
-    private static final int DEFAULT_STICKER_FONT_SIZE_DP = 13;
+    private static final int DEFAULT_STICKER_FONT_SIZE_DP = 11;
 
 
     private int rowCount;
@@ -165,10 +165,6 @@ public class TimetableView extends LinearLayout {
             tv.setTextColor(Color.parseColor("#FFFFFF"));
             tv.setTextSize(TypedValue.COMPLEX_UNIT_DIP, DEFAULT_STICKER_FONT_SIZE_DP);
             tv.setTypeface(null, Typeface.BOLD);
-
-            if (isCenter) {
-                tv.setGravity(Gravity.CENTER);
-            }
 
             tv.setOnClickListener(new OnClickListener() {
                 @Override
